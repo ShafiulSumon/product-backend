@@ -1,7 +1,7 @@
 const express = require('express');
-const v1 = require('./v1/apiRouter');
 const rootRoute = express.Router();
+const apiRouter = require('./v1/apiRouter');
 
-rootRoute.use('/api/v1', v1);
+rootRoute.use('/api/v1', apiRouter);
 
 module.exports = rootRoute;
