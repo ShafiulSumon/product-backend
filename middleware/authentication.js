@@ -17,12 +17,10 @@ function validation(req, res, next) {
     
     jwt.verify(token, process.env.Secret_Token_Key, (err, authData) => {
         if(err) {
-            res.status(403).send({ "message": "unauthorized user!" });
+            res.status(401);
+            throw new Error("Unauthorized Person.");
         }
-        res.status(200).send({
-            "message": "Welcome",
-            "userData": authData
-        });
+        req.authData = authData;
     });
     next();
 }

@@ -14,7 +14,30 @@ const UserSchema = Schema({
     password: {
         type: String,
         required: [true, "please add password"]
-    }
+    },
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user"
+    },
+    cart: [
+        // referencing
+        // {
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'Products'
+        // },
+        // embadding
+        {
+            name: "pen",
+            desc: "hello",
+            price: 10
+        },
+        {
+            name: "pen",
+            desc: "hello",
+            price: 10
+        }
+    ]
 }, {
     timestamps: true
 });
