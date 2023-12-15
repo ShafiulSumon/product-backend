@@ -21,22 +21,10 @@ const UserSchema = Schema({
         default: "user"
     },
     cart: [
-        // referencing
-        // {
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'Products'
-        // },
-        // embadding
         {
-            name: "pen",
-            desc: "hello",
-            price: 10
+            type: Schema.Types.ObjectId,
+            ref: 'Products'
         },
-        {
-            name: "pen",
-            desc: "hello",
-            price: 10
-        }
     ]
 }, {
     timestamps: true
