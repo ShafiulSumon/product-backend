@@ -1,6 +1,6 @@
 const express = require('express');
-const cartController = require('../../controller/cartController');
 const authentication = require('../../middleware/authentication');
+const cartController = require('../../controller/cartController');
 
 const cartRouter = express.Router();
 
@@ -13,4 +13,4 @@ cartRouter.delete('/remove:id', authentication, cartController.removeProduct);
 
 
 
-module.exports = authRouter;
+module.exports = cartRouter;
