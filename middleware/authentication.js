@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-function validation(req, res, next) {
+function authentication(req, res, next) {
     let token = null;
     const bearerHeaders = req.headers.authorization;
     if(typeof bearerHeaders !== 'undefined') {
@@ -25,4 +25,4 @@ function validation(req, res, next) {
     next();
 }
 
-module.exports = validation;
+module.exports = authentication;
