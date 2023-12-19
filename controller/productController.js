@@ -9,7 +9,6 @@ const getAllProducts = asyncHandler(async (req, res) => {
 
 // we got req.authData for authorization
 const createItem = asyncHandler(async (req, res) => {
-    // const { email } = req.authData;
     const { name, desc, price } = req.body;
 
     if(!name || !price) {
@@ -19,36 +18,22 @@ const createItem = asyncHandler(async (req, res) => {
 
     await Products.create({ name, desc, price });
         res.json({ "message": "data has been saved!"});
-
-    // if(email !== 'admin@admin.com') {
-    //     res.status(403);
-    //     throw new Error('Only admin can create/update/delete a product.');
-    // }
-    // else {
-        
-    // }
 });
 
 const updateItem = asyncHandler(async (req, res) => {
-    // const { email } = req.authData;
     const productId = req.params.id;
     const { name, desc, price } = req.body;
-
-    // if(email !== 'admin@admin.com') {
-    //     res.status(403);
-    //     throw new Error('Only admin can create/update/delete a product.');
-    // }
 
     if(!name || !price) {
         res.status(400);
         throw new Error('Product name and price are mandatory!');
     }
 
-    // await Products.replaceOne({ _id: productId}, name, desc, price);
-    // await Products.findByIdAndUpdate(_id:productId, )
     const product = await Products.findById({_id:productId});
     product.name = name;
-    product.desc = desc;
+    if(desc) {
+        product.desc = desc;
+    }
     product.price = price
     await product.save();
 
@@ -56,13 +41,7 @@ const updateItem = asyncHandler(async (req, res) => {
 });
 
 const deleteItem = asyncHandler(async (req, res) => {
-    // const { email } = req.authData;
     const productId = req.params.id;
-
-    // if(email !== 'admin@admin.com') {
-    //     res.status(403);
-    //     throw new Error('Only admin can create/update/delete a product.');
-    // }
 
     await Products.deleteOne({ _id: productId});
     res.json({ "message": "deleted successfully!"});

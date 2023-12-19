@@ -2,10 +2,13 @@ const asyncHandler = require('express-async-handler');
 const Users = require('../models/userModel');
 
 const allProducts = asyncHandler(async (req, res) => {
-    res.json({"hi": "HI"});
-    // const { userId } = req.authData;
-    // const user = await Users.findById(userId);
-    // res.json(user.cart);
+    // res.json({"hi": "HI"});
+    const { userId } = req.authData;
+    const user = await Users.findById(userId).populate('cart');
+    // console.log('user: ', user);
+    // const cartItems = await user.cart.populate('cart');
+    // console.log('cartItems: ', cartItems);
+    res.json(user.cart);
 });
 
 const addProduct = asyncHandler(async (req, res) => {

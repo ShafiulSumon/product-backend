@@ -7,9 +7,9 @@ const cartRouter = express.Router();
 
 cartRouter.get('/all', authentication, cartController.allProducts);
 
-cartRouter.post('/add:id', authentication, cartController.addProduct);
+cartRouter.post('/add/:id', authentication, cartController.addProduct);
 
-cartRouter.delete('/remove:id', authentication, cartController.removeProduct);
+cartRouter.delete('/remove/:id', authentication, cartController.removeProduct);
 
 
 

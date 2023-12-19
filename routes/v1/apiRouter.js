@@ -11,6 +11,6 @@ apiRouter.use('/auth', authRoute);
 
 apiRouter.use('/products', productRoute);
 
-apiRouter.use('cart/', cartRoute);
+apiRouter.use('/cart', cartRoute);
 
 module.exports = apiRouter;
