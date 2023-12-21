@@ -1,18 +1,176 @@
-# Routes:
+﻿Product Backend
 
-## Root route: api/v1
+This is a simple backend project made on NodeJS for e-commerce website.
 
-### health route: /health --> response: "Api is working"
-### authentication route: /auth
-  #### signup: api/v1/auth/signup [POST]
-  #### login: api/v1/auth/login [POST]
-  #### getAllUsers: api/v1/auth/allUsers [GET]
-### products route: /products
-  #### get all the available products: api/v1/products [GET]
-  #### add new products to the db: api/v1/products [POST]
-  #### update existing products: api/v1/products/:id [PUT]
-  #### delete any products: api/v1/products/:id [DELETE]
-### cart route: /cart
-  #### get all the items in the user cart: api/v1/cart/all [GET]
-  #### add new item to the cart: api/v1/cart/add/:id [POST]
-  #### delete item from the cart: api/v1/cart/remove/:id [DELETE]
+All Available Routes:
+
+Root Route:
+
+/api/v1
+
+Health Route:
+
+/health [GET]
+
+Description: Check the health of the API.
+
+Response: "Api is working".
+
+
+Authentication Route: /auth
+
+Signup:
+
+/auth/signup [POST]
+
+Description: Create a new user account.
+
+Request Body:
+
+{
+
+"username": "your\_username",
+
+"email": "your\_email@example.com"
+
+"password": "your\_password",
+
+}
+
+Response: send response if signup is successful or not.
+
+
+Login:
+
+/auth/login [POST]
+
+Description: Authenticate and obtain a token for accessing protected routes.
+
+Request Body:
+
+{
+
+"email": "your\_email@example.com"
+
+"password": "your\_password"
+
+}
+
+Response: Token if login is successful.
+
+
+Get All Users:
+
+/auth/allUsers [GET]
+
+Description: Retrieve a list of all users (Admin access required).
+
+Headers: Authorization token.
+
+Response: Give the list of all registered users.
+
+
+
+Products Route: /products
+
+Get All Products:
+
+/products [GET]
+
+Description: Retrieve a list of all available products.
+
+Response: List of products.
+
+
+Add New Product:
+
+/products [POST]
+
+Description: Add a new product to the database.
+
+Request Body:
+
+{
+
+"name": "product\_name",
+
+"description": "product\_description"
+
+"price": 19.99,
+
+}
+
+Response: Details of the added product.
+
+
+Update Existing Product:
+
+/products/:id [PUT]
+
+Description: Update an existing product by ID.
+
+Request Body:
+
+{
+
+"name": "new\_product\_name",
+
+"description": "new\_product\_description"
+
+"price": 24.99,
+
+}
+
+Response: Details of the updated product.
+
+
+Delete Product:
+
+/products/:id [DELETE]
+
+Description: Delete a product by ID.
+
+Response: Success message.
+
+
+Cart Route: /cart
+
+Get All Cart Items:
+
+/cart/all [GET]
+
+Description: Retrieve all items in the user's cart.
+
+Headers: Authorization token.
+
+
+Add Item to Cart:
+
+/cart/add/:productId [POST]
+
+Description: Add a new item to the user's cart by product ID.
+
+Headers: Authorization token.
+
+Response: Details of the added item.
+
+
+Remove Item from Cart:
+
+/cart/remove/:id [DELETE]
+
+Description: Remove an item from the user's cart by product ID.
+
+Headers: Authorization token.
+
+Response: Success message.
+
+
+
+Setup
+
+Clone the repository: git clone https://github.com/ShafiulSumon/product-backend.git
+
+Install dependencies: npm install
+
+Start the server: npm start
